@@ -12,12 +12,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/ic_verified_user_black_24px" />
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/icon"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
 
     <TextView
         android:layout_width="match_parent"
