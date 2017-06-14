@@ -68,6 +68,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            }
+        });
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.g_client_id))
                 .requestEmail()
@@ -86,6 +93,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 Log.d("USer",user.toString());
                 if (user != null) {
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    Global.name=user.getDisplayName();
+                    Global.image=user.getPhotoUrl().toString();
+                    Global.uid=user.getUid();
+                    Global.email=user.getEmail();
                     // User is signed in
                 /*    Global.uid=user.getUid();
                     Global.user=user.getDisplayName();

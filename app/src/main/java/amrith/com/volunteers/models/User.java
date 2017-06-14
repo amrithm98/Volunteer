@@ -8,4 +8,6 @@ public class User {
     public String id;
     public String college;
     public boolean registered;
+    public String image;
+    public String displayName;
 }
