@@ -110,7 +110,6 @@
             android:text="Login"
             android:textAlignment="center"
             android:background="@color/colorAccent"
-            android:textSize="20sp"
             android:layout_below="@id/et_pass" />
     </LinearLayout>
 </RelativeLayout>
