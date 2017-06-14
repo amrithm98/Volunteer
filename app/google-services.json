@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "220889870024",
+    "firebase_url": "https://v-4-volunteers.firebaseio.com",
+    "project_id": "v-4-volunteers",
+    "storage_bucket": "v-4-volunteers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220889870024:android:06bb9d9750df515c",
+        "android_client_info": {
+          "package_name": "amrith.com.volunteers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220889870024-tkm84efgk58dk1ts2ueo3ot6kop4pj4q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "amrith.com.volunteers",
+            "certificate_hash": "4b45ddad234560ea9117c164c645d87ebacce522"
+          }
+        },
+        {
+          "client_id": "220889870024-u5uvepe9eej05tla5khr1t6gd2hd68ou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfHqijAEEpIymSCjZniPubXrgoXpRd0dk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220889870024-u5uvepe9eej05tla5khr1t6gd2hd68ou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

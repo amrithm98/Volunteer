@@ -5,4 +5,5 @@ package amrith.com.volunteers.Utils;
  */
 
 public interface RestApiInterface {
+
 }
