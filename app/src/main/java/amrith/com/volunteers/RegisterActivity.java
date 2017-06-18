@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
-                Call<String> call=service.register(token,number,number,true);
+                Call<String> call=service.register(token,number,college,true);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {

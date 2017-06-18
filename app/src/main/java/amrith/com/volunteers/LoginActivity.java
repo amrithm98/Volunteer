@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -38,6 +40,7 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Url;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
@@ -60,13 +63,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "GoogleActivity";
+    public NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        navigationView=(NavigationView)findViewById(R.id.nav_view);
+        View hView =  navigationView.getHeaderView(0);
+        final ImageView navImage=(ImageView)findViewById(R.id.imageView);
+        final TextView navName=(TextView)findViewById(R.id.nav_name);
+        final TextView navMail=(TextView)findViewById(R.id.nav_mail);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +104,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Global.picture=user.getPhotoUrl().toString();
                     Global.uid=user.getUid();
                     Global.email=user.getEmail();
+                    navName.setText(Global.name);
+                    navMail.setText(Global.email);
                     Log.d("emailID",user.getEmail());
                     // Admin is signed in
                     Global.uid=user.getUid();
