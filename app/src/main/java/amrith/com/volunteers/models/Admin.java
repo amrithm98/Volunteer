@@ -1,10 +1,10 @@
 package amrith.com.volunteers.models;
 
 /**
- * Created by amrith on 6/14/17.
+ * Created by amrith on 6/18/17.
  */
 
-public class User {
+public class Admin {
     public String uid;
     public String college;
     public boolean registered;

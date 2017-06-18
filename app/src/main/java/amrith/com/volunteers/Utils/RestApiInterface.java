@@ -1,6 +1,6 @@
 package amrith.com.volunteers.Utils;
 
-import amrith.com.volunteers.models.User;
+import amrith.com.volunteers.models.Admin;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -14,6 +14,6 @@ public interface RestApiInterface {
 
     @FormUrlEncoded
     @POST("volunteer-admin/auth/login")
-    Call<User> login(@Field("idToken") String idToken);
+    Call<Admin> login(@Field("idToken") String idToken);
 
 }

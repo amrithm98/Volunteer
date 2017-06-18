@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -33,7 +32,7 @@ import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.Utils.RestApiInterface;
 import amrith.com.volunteers.Utils.TokenUtil;
-import amrith.com.volunteers.models.User;
+import amrith.com.volunteers.models.Admin;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -86,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
 
         mAuth = FirebaseAuth.getInstance();
-    
+
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -98,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Global.uid=user.getUid();
                     Global.email=user.getEmail();
                     Log.d("emailID",user.getEmail());
-                    // User is signed in
+                    // Admin is signed in
                     Global.uid=user.getUid();
                     Global.user=user.getDisplayName();
                     final RestApiInterface service = ApiClient.getService();
@@ -106,12 +105,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         @Override
                         public void tokenObtained(String token) {
                             Log.d("idToken",token);
-                            Call<User> call=service.login(token);
-                            call.enqueue(new Callback<User>() {
+                            Call<Admin> call=service.login(token);
+                            call.enqueue(new Callback<Admin>() {
                                 @Override
-                                public void onResponse(Call <User> call, Response<User> response) {
+                                public void onResponse(Call <Admin> call, Response<Admin> response) {
                                     if(response.code()==200) {
-                                        User user = response.body();
+                                        Admin user = response.body();
                                         Log.d("user","success");
                                         SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -126,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                                 autoLogin = false;
                                             } else {
                                                 //Register
-                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                                                 finish();
                                             }
                                         }
@@ -136,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 }
 
                                 @Override
-                                public void onFailure(Call<User> call, Throwable t) {
+                                public void onFailure(Call<Admin> call, Throwable t) {
                                     Log.d("Login","Fail");
                                     Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
                                 }
@@ -146,7 +145,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
+                    // Admin is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
