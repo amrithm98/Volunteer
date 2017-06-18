@@ -29,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.squareup.picasso.Picasso;
 
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
@@ -63,18 +64,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "GoogleActivity";
-    public NavigationView navigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        navigationView=(NavigationView)findViewById(R.id.nav_view);
-        View hView =  navigationView.getHeaderView(0);
-        final ImageView navImage=(ImageView)findViewById(R.id.imageView);
-        final TextView navName=(TextView)findViewById(R.id.nav_name);
-        final TextView navMail=(TextView)findViewById(R.id.nav_mail);
+//
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +99,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Global.picture=user.getPhotoUrl().toString();
                     Global.uid=user.getUid();
                     Global.email=user.getEmail();
-                    navName.setText(Global.name);
-                    navMail.setText(Global.email);
                     Log.d("emailID",user.getEmail());
                     // Admin is signed in
                     Global.uid=user.getUid();

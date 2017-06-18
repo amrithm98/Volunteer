@@ -15,9 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import amrith.com.volunteers.Utils.Global;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
+        public NavigationView navigationView;
+        public TextView navName,navMail;
+        public ImageView navImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +34,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        navigationView=(NavigationView)findViewById(R.id.nav_view);
+        View hView =  navigationView.getHeaderView(0);
+        navImage=(ImageView)hView.findViewById(R.id.imageView);
+        navName=(TextView)hView.findViewById(R.id.nav_name);
+        navMail=(TextView)hView.findViewById(R.id.nav_mail);
+        navName.setText(Global.name);
+        navMail.setText(Global.email);
+        Picasso.with(getApplicationContext()).load(Global.picture).into(navImage);
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
