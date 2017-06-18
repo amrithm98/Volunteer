@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                                 autoLogin = false;
                                             } else {
                                                 //Register
-                                                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                                 finish();
                                             }
                                         }
