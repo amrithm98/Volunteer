@@ -16,4 +16,8 @@ public interface RestApiInterface {
     @POST("volunteer-admin/auth/login")
     Call<Admin> login(@Field("idToken") String idToken);
 
+    @FormUrlEncoded
+    @POST("volunteer-admin/auth/register")
+    Call<Admin> register(@Field("idToken") String idToken);
+
 }
