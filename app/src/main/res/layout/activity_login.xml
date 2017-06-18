@@ -112,6 +112,7 @@
             android:id="@+id/login"
             android:textAlignment="center"
             android:background="@color/colorAccent"
+            android:textColor="@color/white"
             android:layout_below="@id/et_pass" />
     </LinearLayout>
 </RelativeLayout>

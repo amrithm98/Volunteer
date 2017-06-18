@@ -112,22 +112,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                     if(response.code()==200) {
                                         Admin user = response.body();
                                         Log.d("user","success");
+                                        Toast.makeText(LoginActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
                                         SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.commit();
+                                        Log.d("registed",String.valueOf(user.registered));
                                         if (user.registered) {
-                                            Global.college = user.college;
+//                                            Global.college = user.college;
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                             finish();
                                         } else {
-                                            if (autoLogin) {
-                                                FirebaseAuth.getInstance().signOut();
-                                                autoLogin = false;
-                                            } else {
+//                                            if (autoLogin) {
+//                                                FirebaseAuth.getInstance().signOut();
+//                                                autoLogin = false;
+//                                            } else {
                                                 //Register
-                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                                                 finish();
-                                            }
+//                                            }
                                         }
                                     }else{
                                         Toast.makeText(LoginActivity.this,"Network Error",Toast.LENGTH_SHORT).show();

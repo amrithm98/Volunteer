@@ -1,5 +1,7 @@
 package amrith.com.volunteers.Utils;
 
+import android.text.BoringLayout;
+
 import amrith.com.volunteers.models.Admin;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -18,6 +20,6 @@ public interface RestApiInterface {
 
     @FormUrlEncoded
     @POST("volunteer-admin/auth/register")
-    Call<Admin> register(@Field("idToken") String idToken);
+    Call<String> register(@Field("idToken") String idToken, @Field("phone") String phone, @Field("college")String college, @Field("registered")Boolean registered);
 
 }

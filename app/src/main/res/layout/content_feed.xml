@@ -5,9 +5,11 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="TextView"
+        android:text="You Have No Events!!"
         android:layout_width="match_parent"
+        android:textSize="20dp"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        tools:text="Feed" />
+        android:id="@+id/tv_feed"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 </LinearLayout>

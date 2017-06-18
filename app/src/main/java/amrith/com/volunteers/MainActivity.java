@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        displaySelectedScreen(R.id.content_main);
+        displaySelectedScreen(R.id.nav_feed);
     }
 
     @Override
@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity
                 fragment=new MainFragment();
                 break;
             case R.id.nav_myEvents:
-                fragment=new RegisterAdmin();
                 break;
 
         }
