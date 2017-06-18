@@ -5,9 +5,12 @@ package amrith.com.volunteers.models;
  */
 
 public class User {
-    public String id;
+    public String uid;
     public String college;
     public boolean registered;
-    public String image;
-    public String displayName;
+    public String picture;
+    public String name;
+    public String email;
+    public int status;
+    public long phone;
 }

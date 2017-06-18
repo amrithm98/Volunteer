@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface RestApiInterface {
 
     @FormUrlEncoded
-    @POST("admin/login")
+    @POST("volunteer-admin/auth/login")
     Call<User> login(@Field("idToken") String idToken);
 
 }

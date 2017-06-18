@@ -13,7 +13,7 @@ public class Global {
     public static String id;
     public static String user;
     public static String college;
-    public static String image;
+    public static String picture;
     public static String name;
     public static String email;
 

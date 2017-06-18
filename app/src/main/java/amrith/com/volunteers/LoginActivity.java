@@ -86,39 +86,38 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
 
         mAuth = FirebaseAuth.getInstance();
-
+    
         mAuthListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
-                Log.d("USer",user.toString());
                 if (user != null) {
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     Global.name=user.getDisplayName();
-                    Global.image=user.getPhotoUrl().toString();
+                    Global.picture=user.getPhotoUrl().toString();
                     Global.uid=user.getUid();
                     Global.email=user.getEmail();
+                    Log.d("emailID",user.getEmail());
                     // User is signed in
-                /*    Global.uid=user.getUid();
+                    Global.uid=user.getUid();
                     Global.user=user.getDisplayName();
                     final RestApiInterface service = ApiClient.getService();
                     TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
                         @Override
                         public void tokenObtained(String token) {
+                            Log.d("idToken",token);
                             Call<User> call=service.login(token);
                             call.enqueue(new Callback<User>() {
                                 @Override
-                                public void onResponse(Call<User> call, Response<User> response) {
+                                public void onResponse(Call <User> call, Response<User> response) {
                                     if(response.code()==200) {
-                                        Global.offline=false;
-                                        User student = response.body();
-                                        Global.id = student.id;
+                                        User user = response.body();
+                                        Log.d("user","success");
                                         SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString("id", student.id);
                                         editor.commit();
-                                        if (student.registered) {
-                                            Global.college = student.college;
+                                        if (user.registered) {
+                                            Global.college = user.college;
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                             finish();
                                         } else {
@@ -145,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         }
                     });
 
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid()); */
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
