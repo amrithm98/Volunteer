@@ -115,7 +115,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                     if(response.code()==200) {
                                         Admin user = response.body();
                                         autoLogin=true;
-                                        
                                         Log.d("user","success");
                                         Toast.makeText(LoginActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
                                         SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
