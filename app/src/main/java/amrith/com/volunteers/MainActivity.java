@@ -1,5 +1,6 @@
 package amrith.com.volunteers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import amrith.com.volunteers.Utils.Global;
@@ -124,7 +126,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id=item.getItemId();
 
-        displaySelectedScreen(id);
+        if(id==R.id.nav_logout)
+        {
+            LoginActivity.autoLogin=false;
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+        }
+        else
+        {
+            displaySelectedScreen(id);
+        }
 
         return true;
     }

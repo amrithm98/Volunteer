@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     Button login;
 
     boolean flag = true;
-    boolean autoLogin=true;
+    public static boolean autoLogin=true;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
@@ -114,6 +114,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 public void onResponse(Call <Admin> call, Response<Admin> response) {
                                     if(response.code()==200) {
                                         Admin user = response.body();
+                                        autoLogin=true;
+                                        
                                         Log.d("user","success");
                                         Toast.makeText(LoginActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
                                         SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
