@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by amrith on 6/14/17.
@@ -24,6 +25,9 @@ public interface RestApiInterface {
     Call<String> register(@Field("idToken") String idToken, @Field("phone") String phone, @Field("college")String college, @Field("registered")Boolean registered);
 
     @FormUrlEncoded
-    @POST("volunteer-admin/event/newEvent")
-    Call<Event> createEvent(@Field("idToken")String idToken,@Field("name")String name,@Field("regFee") String fee,@Field("desc")String desc,@Field("date")String date,@Field("time")String time);
+    @PUT("volunteer-admin/event/newEvent")
+    Call<Event> createEvent(@Field("idToken")String idToken,@Field("name")String name,@Field("regFee") String fee,
+                            @Field("desc")String desc, @Field("date")String date,@Field("time")String time,@Field("adminUid")String uid);
+
+
 }

@@ -97,7 +97,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     Global.name=user.getDisplayName();
                     Global.picture=user.getPhotoUrl().toString();
                     Global.uid=user.getUid();
