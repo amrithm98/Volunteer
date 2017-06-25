@@ -19,13 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <service
-            android:name=".Services.NotificationReceiver">
+        <activity android:name=".RegisterActivity" />
+
+        <service android:name=".Services.NotificationReceiver">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".NewEvent"></activity>
     </application>
 
 </manifest>

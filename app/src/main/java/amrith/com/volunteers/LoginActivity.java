@@ -29,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import amrith.com.volunteers.Utils.ApiClient;
@@ -70,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 //
+        FirebaseMessaging.getInstance().subscribeToTopic("volunteers");
+        FirebaseMessaging.getInstance().subscribeToTopic("events");
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +147,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 public void onFailure(Call<Admin> call, Throwable t) {
                                     Log.d("Login","Fail");
                                     Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, LoginActivity.class));
                                 }
                             });
                         }
