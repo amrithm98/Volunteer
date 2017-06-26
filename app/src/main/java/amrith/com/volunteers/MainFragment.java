@@ -34,7 +34,7 @@ import retrofit2.http.Field;
  * Created by amrith on 6/18/17.
  */
 
-public class MainFragment extends Fragment implements FeedAdapter.ItemClickListener{
+public class MainFragment extends Fragment{
 
     @BindView(R.id.rv_feed)
     RecyclerView rvFeed;
@@ -63,10 +63,6 @@ public class MainFragment extends Fragment implements FeedAdapter.ItemClickListe
         getFeed();
     }
 
-    @Override
-    public void onClick(View view, int position) {
-
-    }
 
     public void getFeed()
     {
@@ -86,7 +82,6 @@ public class MainFragment extends Fragment implements FeedAdapter.ItemClickListe
                         rvFeed.setAdapter(feedAdapter);
                         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
                         rvFeed.setLayoutManager(linearLayoutManager);
-                        feedAdapter.setClickListener(MainFragment.this);
                         feedAdapter.notifyDataSetChanged();
                     }
 

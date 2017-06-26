@@ -1,10 +1,12 @@
 package amrith.com.volunteers.Adapters;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,11 +26,6 @@ import butterknife.ButterKnife;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder> {
 
-    public interface ItemClickListener {
-        public void onClick(View view, int position);
-    }
-
-    private ItemClickListener clickListener;
     private List<Feed> feedList;
     private Context context;
 
@@ -52,9 +49,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
         holder.userName.setText(feed.ownerName);
         holder.desc.setText(feed.desc);
         holder.time.setText(feed.updatedAt);
-    }
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.clickListener = itemClickListener;
+        holder.done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Viewed This Feed", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     @Override
@@ -62,7 +63,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
         return feedList.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.profileImage)
         ImageView profilePic;
 
@@ -75,18 +76,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
         @BindView(R.id.description)
         TextView desc;
 
+        @BindView(R.id.done)
+        Button done;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            if (clickListener != null) {
-                clickListener.onClick(view, getAdapterPosition());
-            }
-        }
     }
 
 }
