@@ -16,7 +16,7 @@ public class Global {
     public static String picture;
     public static String name;
     public static String email;
-
+    public static int eventId;
     public static boolean offline=false;
 
 }

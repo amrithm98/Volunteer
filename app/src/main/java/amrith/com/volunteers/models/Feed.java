@@ -10,5 +10,8 @@ public class Feed {
     public String adminUid;
     public String eventId;
     public String desc;
+    public String ownerName;
+    public String ownerImage;
+    public String updatedAt;
     
 }

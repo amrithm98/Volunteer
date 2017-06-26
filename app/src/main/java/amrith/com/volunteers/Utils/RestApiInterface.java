@@ -7,6 +7,7 @@ import java.util.List;
 import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.College;
 import amrith.com.volunteers.models.Event;
+import amrith.com.volunteers.models.Feed;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -41,5 +42,15 @@ public interface RestApiInterface {
     @FormUrlEncoded
     @PUT("volunteer-admin/college/")
     Call<College> addCollege(@Field("idToken") String idToken,@Field("name") String collegeName);
+
+    @FormUrlEncoded
+    @POST("volunteer-admin/feed/eventFeeds")
+    Call<List<Feed>> getAllFeed(@Field("idToken")String idToken,@Field("eventId") int eventId);
+
+    @FormUrlEncoded
+    @PUT("volunteer-admin/feed/new")
+    Call<Feed> newFeed(@Field("idToken") String token,@Field("desc") String description,
+                       @Field("ownerName")String name,@Field("ownerImage") String url,
+                       @Field("adminUid")String uid,@Field("eventId") int eventId);
 
 }

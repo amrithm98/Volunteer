@@ -47,12 +47,11 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        Feed item=feedList.get(position);
-        //Uri uri = Uri.fromFile(new File(images.get(position).getDataPath()));
-//        Picasso.with(context).load(url.substring(0,url.length()-1)+item.image).fit().error(R.drawable.sample).into(holder.ivItem);
-//        holder.tvItem.setText(item.name);
-//        String price= "₹"+String.valueOf(item.price);
-//        holder.tvPrice.setText(price);
+        Feed feed=feedList.get(position);
+        Picasso.with(context).load(feed.ownerImage).fit().error(R.drawable.icon).into(holder.profilePic);
+        holder.userName.setText(feed.ownerName);
+        holder.desc.setText(feed.desc);
+        holder.time.setText(feed.updatedAt);
     }
     public void setClickListener(ItemClickListener itemClickListener) {
         this.clickListener = itemClickListener;

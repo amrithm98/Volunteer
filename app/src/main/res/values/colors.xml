@@ -9,7 +9,8 @@
 
     <color name="lines_grey">#65CDC5BF</color>
     <color name="button_back">#FFAE2B2A</color>
-
+    <color name="button">#55acee</color>
+    <color name="light_yellow">#ffd54f</color>
     <color name="feed_bg">#d3d6db</color>
     <color name="feed_item_bg">#ffffff</color>
     <color name="feed_item_border">#c2c3c8</color>
