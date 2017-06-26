@@ -27,7 +27,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".NewEvent"></activity>
+        <activity android:name=".NewEvent" />
     </application>
 
 </manifest>
