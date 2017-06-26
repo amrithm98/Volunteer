@@ -27,13 +27,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
     public interface ItemClickListener {
         public void onClick(View view, int position);
     }
+
     private ItemClickListener clickListener;
-    private List<Feed> itemList;
+    private List<Feed> feedList;
     private Context context;
 
-    public FeedAdapter(Context con, List<Feed> items) {
+    public FeedAdapter(Context con, List<Feed> feeds) {
         context = con;
-        itemList = items;
+        feedList = feeds;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        Feed item=itemList.get(position);
+        Feed item=feedList.get(position);
         //Uri uri = Uri.fromFile(new File(images.get(position).getDataPath()));
 //        Picasso.with(context).load(url.substring(0,url.length()-1)+item.image).fit().error(R.drawable.sample).into(holder.ivItem);
 //        holder.tvItem.setText(item.name);
@@ -59,21 +60,28 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return feedList.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        @BindView(R.id.iv_item)
-        ImageView ivItem;
-        @BindView(R.id.tv_item)
-        TextView tvItem;
-        @BindView(R.id.tv_cost)
-        TextView tvPrice;
+        @BindView(R.id.profileImage)
+        ImageView profilePic;
+
+        @BindView(R.id.userName)
+        TextView userName;
+
+        @BindView(R.id.timeStamp)
+        TextView time;
+
+        @BindView(R.id.description)
+        TextView desc;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View view) {
             if (clickListener != null) {

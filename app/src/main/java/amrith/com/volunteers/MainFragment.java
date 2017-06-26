@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
  */
 
 public class MainFragment extends Fragment {
+
     @BindView(R.id.tv_feed)
     TextView feedText;
 
