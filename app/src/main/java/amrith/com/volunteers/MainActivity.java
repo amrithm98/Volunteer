@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
                 fragment=new MainFragment();
                 break;
             case R.id.nav_myEvents:
+                startActivity(new Intent(MainActivity.this,RegisterActivity.class));
                 break;
 
         }

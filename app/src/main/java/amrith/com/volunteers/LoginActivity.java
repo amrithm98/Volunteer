@@ -147,7 +147,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                     Log.d("Login","Fail");
                                     Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
                                     autoLogin=false;
-                                    startActivity(new Intent(LoginActivity.this, LoginActivity.class));
                                 }
                             });
                         }
