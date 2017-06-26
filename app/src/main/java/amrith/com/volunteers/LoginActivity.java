@@ -1,6 +1,5 @@
 package amrith.com.volunteers;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
+import amrith.com.volunteers.Utils.ProgressDialog;
 import amrith.com.volunteers.Utils.RestApiInterface;
 import amrith.com.volunteers.Utils.TokenUtil;
 import amrith.com.volunteers.models.Admin;
@@ -65,12 +65,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "GoogleActivity";
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-//
+        progressDialog=new ProgressDialog(this);
         FirebaseMessaging.getInstance().subscribeToTopic("volunteers");
         FirebaseMessaging.getInstance().subscribeToTopic("events");
         login.setOnClickListener(new View.OnClickListener() {
@@ -109,11 +110,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
                         @Override
                         public void tokenObtained(String token) {
+                            progressDialog.showProgressDialog();
                             Log.d("idToken",token);
                             Call<Admin> call=service.login(token);
                             call.enqueue(new Callback<Admin>() {
                                 @Override
                                 public void onResponse(Call <Admin> call, Response<Admin> response) {
+                                    progressDialog.disMissProgressDialog();
                                     if(response.code()==200) {
                                         Admin user = response.body();
                                         autoLogin=true;
@@ -144,6 +147,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                                 @Override
                                 public void onFailure(Call<Admin> call, Throwable t) {
+                                    progressDialog.disMissProgressDialog();
                                     Log.d("Login","Fail");
                                     Toast.makeText(LoginActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
                                     autoLogin=false;

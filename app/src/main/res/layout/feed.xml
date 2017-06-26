@@ -6,12 +6,12 @@
     android:id="@+id/cardView"
     android:background="@color/lines_grey"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginLeft="3dp"
-    android:layout_marginRight="3dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="5dp"
-    card_view:cardElevation="0dp">
+    card_view:cardElevation="5dp">
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/description"
+                    android:textColor="@color/black"
                     android:text="@string/lorem"
                     android:lineSpacingExtra="8sp"
                     android:textSize="16sp"

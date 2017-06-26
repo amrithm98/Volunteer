@@ -48,7 +48,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
         Picasso.with(context).load(feed.ownerImage).fit().error(R.drawable.icon).into(holder.profilePic);
         holder.userName.setText(feed.ownerName);
         holder.desc.setText(feed.desc);
-        holder.time.setText(feed.updatedAt);
+        holder.time.setText(feed.updatedAt.substring(0,10));
         holder.done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
