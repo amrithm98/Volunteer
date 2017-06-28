@@ -12,6 +12,7 @@ public class ChatModel {
     private String imageUrl;
 
     public ChatModel() {
+
     }
 
     public ChatModel(String text, String name, String photoUrl, String imageUrl) {

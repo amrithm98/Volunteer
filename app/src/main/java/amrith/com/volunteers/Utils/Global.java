@@ -18,5 +18,5 @@ public class Global {
     public static String email;
     public static int eventId;
     public static boolean offline=false;
-
+    public static String FRIENDLY_MSG_LENGTH="friendly_msg_length";
 }

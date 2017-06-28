@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_myEvents:
                 startActivity(new Intent(MainActivity.this,RegisterActivity.class));
                 break;
+            case R.id.nav_forum:
+                fragment=new ChatFragment();
+                break;
 
         }
 
