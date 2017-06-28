@@ -60,7 +60,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder
 
     @Override
     public int getItemCount() {
+        if(feedList!=null)
         return feedList.size();
+        else return 0;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder{
