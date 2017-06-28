@@ -67,6 +67,7 @@ import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.models.ChatModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Optional;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
@@ -109,7 +110,7 @@ public class ChatFragment extends Fragment{
     @BindView(R.id.messageEditText)
     public EditText mMessageEditText;
 
-    @BindView(R.id.messageImageView)
+    @BindView(R.id.addMessageImageView)
     public ImageView mAddMessageImageView;
 
     public FirebaseRemoteConfig mFirebaseRemoteConfig;
