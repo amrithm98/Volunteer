@@ -36,6 +36,10 @@ public interface RestApiInterface {
                             @Field("desc")String desc, @Field("date")String date,
                             @Field("time")String time,@Field("adminUid")String uid);
 
+    @FormUrlEncoded
+    @POST("volunteer-admin/event/myEvents")
+    Call<List<Event>> getEventList(@Field("idToken")String token,@Field("adminUid")String uid);
+
     @GET("public/college/")
     Call<List<College>> getCollegeList();
 
