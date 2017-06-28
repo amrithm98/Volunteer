@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -79,10 +80,10 @@ public class ChatFragment extends Fragment{
     public static final String MESSAGES_CHILD = "messages";
     public static final int REQUEST_INVITE = 1;
     public static final int REQUEST_IMAGE = 2;
-    public static final int DEFAULT_MSG_LENGTH_LIMIT = 10;
+    public static final int DEFAULT_MSG_LENGTH_LIMIT = 50;
     public static final String ANONYMOUS = "anonymous";
     public static final String MESSAGE_SENT_EVENT = "message_sent";
-    public static final String MESSAGE_URL = "http://friendlychat.firebase.google.com/message/";
+    public static final String MESSAGE_URL = "https://v-4-volunteers.firebaseio.com/";
     public static final String LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif";
 
     public String mUsername;
@@ -114,12 +115,14 @@ public class ChatFragment extends Fragment{
     public ImageView mAddMessageImageView;
 
     public FirebaseRemoteConfig mFirebaseRemoteConfig;
+
     public GoogleApiClient mGoogleApiClient;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Forum");
+        MainActivity.fab.setVisibility(View.GONE);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mUsername = ANONYMOUS;
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -198,11 +201,9 @@ public class ChatFragment extends Fragment{
 
                 if (friendlyMessage.getPhotoUrl() == null) {
                     viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(getActivity(),
-                            R.drawable.ic_description_black_36dp));
+                            R.drawable.icon));
                 } else {
-//                    Glide.with(MainActivity.this)
-//                            .load(friendlyMessage.getPhotoUrl())
-//                            .into(viewHolder.messengerImageView);
+
                     Picasso.with(getActivity())
                             .load(friendlyMessage.getPhotoUrl()).into(viewHolder.messengerImageView);
                 }
@@ -250,7 +251,7 @@ public class ChatFragment extends Fragment{
         // Define default config values. Defaults are used when fetched config values are not
         // available. Eg: if an error occurred fetching values from the server.
         Map<String, Object> defaultConfigMap = new HashMap<>();
-        defaultConfigMap.put("friendly_msg_length", 10L);
+        defaultConfigMap.put("friendly_msg_length", 50L);
 
         // Apply config settings and default values.
         mFirebaseRemoteConfig.setConfigSettings(firebaseRemoteConfigSettings);
@@ -259,8 +260,10 @@ public class ChatFragment extends Fragment{
         // Fetch remote config.
         fetchConfig();
 
-        mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSharedPreferences
-                .getInt(Global.FRIENDLY_MSG_LENGTH, DEFAULT_MSG_LENGTH_LIMIT))});
+//        mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSharedPreferences
+//                .getInt(Global.FRIENDLY_MSG_LENGTH, DEFAULT_MSG_LENGTH_LIMIT))});
+//        mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)
+//        });
         mMessageEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

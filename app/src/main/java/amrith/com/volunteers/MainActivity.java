@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
         public NavigationView navigationView;
         public TextView navName,navMail;
         public ImageView navImage;
+        public static FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         navName.setText(Global.name);
         navMail.setText(Global.email);
         Picasso.with(getApplicationContext()).load(Global.picture).into(navImage);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
