@@ -64,7 +64,8 @@
         </service>
 
         <activity android:name=".NewEvent" />
-        <activity android:name=".ChooseEvent"></activity>
+        <activity android:name=".ChooseEvent" />
+        <activity android:name=".Helper"></activity>
     </application>
 
 </manifest>

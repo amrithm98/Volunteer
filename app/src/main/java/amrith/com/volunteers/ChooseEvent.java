@@ -37,14 +37,11 @@ public class ChooseEvent extends AppCompatActivity implements EventListAdapter.I
 
     public EventListAdapter eventListAdapter;
 
-    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_event);
         ButterKnife.bind(this);
-        progressDialog=new ProgressDialog(this);
-        progressDialog.showProgressDialog();
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
@@ -53,18 +50,17 @@ public class ChooseEvent extends AppCompatActivity implements EventListAdapter.I
                 call.enqueue(new Callback<List<Event>>() {
                     @Override
                     public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-                        progressDialog.disMissProgressDialog();
                         eList= (ArrayList<Event>) response.body();
                         eventListAdapter=new EventListAdapter(getApplicationContext(),eList);
                         rvEvent.setAdapter(eventListAdapter);
                         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
                         rvEvent.setLayoutManager(linearLayoutManager);
+                        eventListAdapter.setClickListener(ChooseEvent.this);
                         eventListAdapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onFailure(Call<List<Event>> call, Throwable t) {
-                        progressDialog.disMissProgressDialog();
                         Log.d("FailItems",t.toString());
                         Toast.makeText(getApplicationContext(),"Unable to Load",Toast.LENGTH_SHORT).show();
                     }

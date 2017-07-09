@@ -1,4 +1,4 @@
-package amrith.com.volunteers;
+package amrith.com.volunteers.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import amrith.com.volunteers.Adapters.FeedAdapter;
+import amrith.com.volunteers.R;
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.Utils.ProgressDialog;

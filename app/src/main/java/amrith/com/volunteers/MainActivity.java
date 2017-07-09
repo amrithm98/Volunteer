@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,6 +21,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
+import amrith.com.volunteers.Fragments.ChatFragment;
+import amrith.com.volunteers.Fragments.MainFragment;
 import amrith.com.volunteers.Utils.Global;
 
 public class MainActivity extends AppCompatActivity
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Create An Event", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                startActivity(new Intent(MainActivity.this,NewEvent.class));
+                startActivity(new Intent(MainActivity.this,Helper.class));
             }
         });
 

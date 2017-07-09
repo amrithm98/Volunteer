@@ -1,4 +1,4 @@
-package amrith.com.volunteers;
+package amrith.com.volunteers.Fragments;
 
 /**
  * Created by amrith on 6/28/17.
@@ -65,6 +65,9 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+import amrith.com.volunteers.LoginActivity;
+import amrith.com.volunteers.MainActivity;
+import amrith.com.volunteers.R;
 import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.models.ChatModel;
 import butterknife.BindView;

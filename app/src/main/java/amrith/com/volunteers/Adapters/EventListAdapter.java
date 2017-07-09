@@ -61,7 +61,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Item
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        @BindView(R.id.description)
+        @BindView(R.id.event_name)
         TextView eventName;
 
         public ItemViewHolder(View itemView) {

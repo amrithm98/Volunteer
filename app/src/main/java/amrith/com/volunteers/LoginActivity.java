@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                         Log.d("registed",String.valueOf(user.registered));
                                         if (user.registered) {
 //                                            Global.college = user.college;
-                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                            startActivity(new Intent(LoginActivity.this, ChooseEvent.class));
                                             finish();
                                         } else {
 //                                            if (autoLogin) {
