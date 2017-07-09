@@ -7,11 +7,10 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="amrith.com.volunteers.Helper"
-    tools:showIn="@layout/app_bar_main">
+    android:layout_marginBottom="40dp">
 
     <FrameLayout
         android:id="@+id/content_frame_helper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="8dp"/>
+        android:layout_height="match_parent" />
 </RelativeLayout>

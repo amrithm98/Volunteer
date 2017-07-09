@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="amrith.com.volunteers.Helper">
 
-    <include layout="@layout/content_helper" />
+    <include layout="@layout/content_helper"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

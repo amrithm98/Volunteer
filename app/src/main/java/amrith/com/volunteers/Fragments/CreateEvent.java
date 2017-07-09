@@ -70,8 +70,6 @@ public class CreateEvent extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Feed");
         mAuth = FirebaseAuth.getInstance();
-
-
     }
 
     @Nullable
@@ -145,19 +143,19 @@ public class CreateEvent extends Fragment{
                     public void onResponse(Call<Event> call, Response<Event> response) {
                         if(response.code()==200)
                         {
-                            Snackbar.make(getCurrentFocus(), "Successfully Created!", Snackbar.LENGTH_LONG)
+                            Snackbar.make(getActivity().getCurrentFocus(), "Successfully Created!", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
                             startActivity(new Intent(getActivity(),MainActivity.class));
                         }
                         else {
-                            Snackbar.make(getCurrentFocus(), "Creating an Event Failed", Snackbar.LENGTH_LONG)
+                            Snackbar.make(getActivity().getCurrentFocus(), "Creating an Event Failed", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Event> call, Throwable t) {
-                        Snackbar.make(getCurrentFocus(), "Network Error", Snackbar.LENGTH_LONG)
+                        Snackbar.make(getActivity().getCurrentFocus(), "Network Error", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
                 });
