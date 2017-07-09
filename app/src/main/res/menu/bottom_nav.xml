@@ -5,13 +5,13 @@
         android:id="@+id/action_event"
         android:enabled="true"
         android:icon="@drawable/ic_notifications_active_black_24dp"
-        android:title="Feed"
+        android:title="Event"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_feed"
         android:enabled="true"
         android:icon="@drawable/ic_description_black_36dp"
-        android:title="Event"
+        android:title="Feed"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_addVol"

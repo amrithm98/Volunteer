@@ -68,7 +68,7 @@ public class CreateEvent extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Feed");
+        getActivity().setTitle("Create An Event");
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -94,6 +94,11 @@ public class CreateEvent extends Fragment{
                 e.printStackTrace();
             }
         }
+    }
+
+    public void displayScreen(int id)
+    {
+
     }
 
     @OnClick(R.id.newEvent)
