@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_desc"
+        android:text="Description"
+        android:textStyle="normal|bold" />
 
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_below="@+id/tv_desc"
+        android:id="@+id/description" />
+
+    <Button
+        android:text="Post Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/post"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

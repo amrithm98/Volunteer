@@ -96,11 +96,6 @@ public class CreateEvent extends Fragment{
         }
     }
 
-    public void displayScreen(int id)
-    {
-
-    }
-
     @OnClick(R.id.newEvent)
     public void addEvent()
     {
