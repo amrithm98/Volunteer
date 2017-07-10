@@ -6,6 +6,7 @@ package amrith.com.volunteers.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,14 @@ import java.util.List;
 import amrith.com.volunteers.R;
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.RestApiInterface;
+import amrith.com.volunteers.Utils.TokenUtil;
+import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.College;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class AddVolunteer extends Fragment{
@@ -64,11 +69,47 @@ public class AddVolunteer extends Fragment{
                 }
                 ArrayAdapter<String> list=new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,cnames);
                 spinner.setAdapter(list);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String college=spinner.getItemAtPosition(position).toString();
+                        getPeople(collegeList.get(college));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
 
             @Override
             public void onFailure(Call<List<College>> call, Throwable t) {
             }
         });
+    }
+
+    public void getPeople(final int collegeId)
+    {
+
+        TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
+            @Override
+            public void tokenObtained(String token) {
+                RestApiInterface service = ApiClient.getService();
+                Call<List<Admin>> call=service.getPeopleInCollege(token,collegeId);
+                call.enqueue(new Callback<List<Admin>>() {
+                    @Override
+                    public void onResponse(Call<List<Admin>> call, Response<List<Admin>> response) {
+                        
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Admin>> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+
     }
 }

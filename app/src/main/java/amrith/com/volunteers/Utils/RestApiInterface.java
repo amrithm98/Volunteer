@@ -57,4 +57,8 @@ public interface RestApiInterface {
                        @Field("ownerName")String name,@Field("ownerImage") String url,
                        @Field("adminUid")String uid,@Field("eventId") int eventId);
 
+    @FormUrlEncoded
+    @POST("volunteer-admin/college/people")
+    Call<List<Admin>> getPeopleInCollege(@Field("idToken")String token,@Field("collegeId") int id);
+
 }
