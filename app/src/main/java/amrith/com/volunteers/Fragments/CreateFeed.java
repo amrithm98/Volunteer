@@ -57,12 +57,14 @@ public class CreateFeed extends Fragment{
 
     @OnClick(R.id.post)
     public void post(){
+
         progressDialog.showProgressDialog();
         final String desc=etDesc.getText().toString();
         if(desc.isEmpty()){
             etDesc.setError("Cannot Be Empty");
             return;
         }
+
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
