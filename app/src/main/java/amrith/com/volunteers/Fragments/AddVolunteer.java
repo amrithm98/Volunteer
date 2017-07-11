@@ -86,7 +86,7 @@ public class AddVolunteer extends Fragment{
                     cnames.add(c.name);
                     collegeList.put(c.name,c.id);
                 }
-                ArrayAdapter<String> list=new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,cnames);
+                ArrayAdapter<String> list=new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,cnames);
                 spinner.setAdapter(list);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override

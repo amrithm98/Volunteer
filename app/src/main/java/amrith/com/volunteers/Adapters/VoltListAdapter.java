@@ -70,8 +70,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
         holder.addVolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adminList.remove(position);
-
+                removeAdmin(position);
             }
         });
     }
@@ -85,6 +84,12 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
 
     public void setClickListener(ItemClickListener itemClickListener) {
         this.clickListener = itemClickListener;
+    }
+
+    public void removeAdmin(int position)
+    {
+        adminList.remove(position);
+        notifyDataSetChanged();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
