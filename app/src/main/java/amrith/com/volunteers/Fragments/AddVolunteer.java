@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,7 +102,10 @@ public class AddVolunteer extends Fragment{
                 call.enqueue(new Callback<List<Admin>>() {
                     @Override
                     public void onResponse(Call<List<Admin>> call, Response<List<Admin>> response) {
-                        
+                        if(response.code()==200)
+                        {
+                            Toast.makeText(getActivity(),"Got Volunteers in the college",Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
