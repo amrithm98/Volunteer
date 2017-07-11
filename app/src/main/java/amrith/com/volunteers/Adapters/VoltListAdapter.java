@@ -71,6 +71,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
             @Override
             public void onClick(View v) {
                 adminList.remove(position);
+
             }
         });
     }

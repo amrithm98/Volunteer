@@ -68,7 +68,6 @@ public class MainFragment extends Fragment{
     public void getFeed()
     {
         final RestApiInterface service = ApiClient.getService();
-        Global.eventId=2;
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
