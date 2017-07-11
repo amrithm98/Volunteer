@@ -104,8 +104,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Global.email=user.getEmail();
                     Log.d("emailID",user.getEmail());
                     // Admin is signed in
-                    Global.uid=user.getUid();
-                    Global.user=user.getDisplayName();
                     final RestApiInterface service = ApiClient.getService();
                     TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
                         @Override
@@ -122,9 +120,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                         autoLogin=true;
                                         Log.d("user","success");
                                         Toast.makeText(LoginActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
-                                        SharedPreferences sharedPreferences = getSharedPreferences("drishti", Context.MODE_PRIVATE);
+                                        SharedPreferences sharedPreferences = getSharedPreferences(Global.SHARED_PREF, Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("uid",user.uid);
+                                        editor.putString("name",user.name);
+                                        editor.putString("picture",user.picture);
+                                        editor.putString("email",user.email);
                                         editor.commit();
+
                                         Log.d("registed",String.valueOf(user.registered));
                                         if (user.registered) {
 //                                            Global.college = user.college;

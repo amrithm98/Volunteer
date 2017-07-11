@@ -1,6 +1,8 @@
 package amrith.com.volunteers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadSharedPref();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView=(NavigationView)findViewById(R.id.nav_view);
@@ -66,6 +69,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         displaySelectedScreen(R.id.nav_feed);
+    }
+
+    public void loadSharedPref()
+    {
+        SharedPreferences sharedPreferences=getSharedPreferences(Global.SHARED_PREF, Context.MODE_PRIVATE);
+        Global.uid=sharedPreferences.getString("uid","UID");
+        Global.name=sharedPreferences.getString("name","name");
+        Global.picture=sharedPreferences.getString("picture","picture");
+        Global.email=sharedPreferences.getString("email","email");
+
     }
 
     @Override
