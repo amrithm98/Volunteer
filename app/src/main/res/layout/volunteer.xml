@@ -11,6 +11,7 @@
     app:cardCornerRadius="10dp"
     android:layout_marginTop="5dp"
     card_view:cardElevation="5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@drawable/grad"
@@ -41,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add"
-            android:id="@+id/add_button"
+            android:id="@+id/add_volt"
             android:layout_alignParentRight="true"
             android:elevation="9dp"
             android:theme="@style/AddButton"
