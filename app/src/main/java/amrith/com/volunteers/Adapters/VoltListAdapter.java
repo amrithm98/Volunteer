@@ -18,9 +18,13 @@ import java.util.List;
 
 import amrith.com.volunteers.Helper;
 import amrith.com.volunteers.R;
+import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
+import amrith.com.volunteers.Utils.RestApiInterface;
+import amrith.com.volunteers.Utils.TokenUtil;
 import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.Admin;
+import amrith.com.volunteers.models.College;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -45,6 +49,9 @@ import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.Feed;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by amrith on 6/28/17.
@@ -77,12 +84,12 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
             @Override
             public void onClick(View v) {
 //                removeAdmin(position);
-                showPopup();
+                showPopup(position);
             }
         });
     }
 
-    public void showPopup(){
+    public void showPopup(int pos){
 
         Dialog dialog=new Dialog(context);
         dialog.setContentView(R.layout.team_access_dialog);
@@ -90,6 +97,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
         final Spinner teamSpinner=(Spinner)dialog.findViewById(R.id.spinner_team);
         final Spinner accessSpinner=(Spinner)dialog.findViewById(R.id.spinner_access);
         Button submit=(Button)dialog.findViewById(R.id.addToTeam);
+        final int currentPosition=pos;
 
         ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
         teamSpinner.setAdapter(team_list);
@@ -153,11 +161,37 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
                         return;
                 }
                 Toast.makeText(context,table,Toast.LENGTH_SHORT).show();
+                addVolunteer(table,level,currentPosition);
             }
         });
 
         dialog.show();
 
+    }
+
+    public void addVolunteer(final String table, final int level, int pos)
+    {
+        final Admin admin=adminList.get(pos);
+        TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
+            @Override
+            public void tokenObtained(String token) {
+                RestApiInterface service = ApiClient.getService();
+                Call<String> call=service.addVolunteerToTeam(table,token,admin.uid,Global.eventId,level);
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if(response.code()==200){
+                            Toast.makeText(context,"Added To Team",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(context,"Network Error",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override

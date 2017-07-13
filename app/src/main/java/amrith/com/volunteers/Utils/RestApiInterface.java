@@ -14,6 +14,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 /**
  * Created by amrith on 6/14/17.
@@ -61,4 +62,8 @@ public interface RestApiInterface {
     @POST("volunteer-admin/college/people")
     Call<List<Admin>> getPeopleInCollege(@Field("idToken")String token,@Field("collegeId") int id);
 
+    @FormUrlEncoded
+    @POST("volunteer-admin/{team}/add")
+    Call <String> addVolunteerToTeam(@Path("team")String table,@Field("idToken")String token,@Field("adminUid")String uid,
+                                                @Field("eventId") int eventId,@Field("access")int access);
 }
