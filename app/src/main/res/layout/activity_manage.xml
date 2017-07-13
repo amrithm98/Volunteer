@@ -9,5 +9,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="amrith.com.volunteers.Manage">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teams"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:id="@+id/tv_name"
+        android:textAlignment="center" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:id="@+id/rv_teams">
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
