@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity
                 fragment=new ChatFragment();
                 break;
             case R.id.nav_manage:
+                startActivity(new Intent(MainActivity.this,Manage.class));
                 break;
         }
 
