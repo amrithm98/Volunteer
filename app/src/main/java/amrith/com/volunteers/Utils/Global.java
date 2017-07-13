@@ -2,6 +2,10 @@ package amrith.com.volunteers.Utils;
 
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * Created by amrith on 6/14/17.
  */
@@ -21,4 +25,7 @@ public class Global {
     public static int eventId;
     public static boolean offline=false;
     public static String FRIENDLY_MSG_LENGTH="friendly_msg_length";
+    public static ArrayList<String> teamList=new ArrayList<>(Arrays.asList("Accomodation","Food and Venue","Publicity",
+                                                "Registration","Sessions","Sponsorship"));
+    public static ArrayList<Integer> accessList=new ArrayList<>(Arrays.asList(10,9,8,0));
 }

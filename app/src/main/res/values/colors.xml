@@ -15,5 +15,5 @@
     <color name="timestamp">#a0a3a7</color>
     <color name="grad1">#ff7e5f</color>
     <color name="grad2">#feb47b</color>
-
+    <color name="light_grey">#F5F5F5</color>
 </resources>

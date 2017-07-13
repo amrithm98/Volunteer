@@ -9,10 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String  HOST_URL = "http://192.168.1.102:3000/" ;
+    public static final String  HOST_URL = "http://192.168.43.243:3000/" ;
     public static final String  NODE_PORT = "";
     public static final String  BASE_URL = HOST_URL ;
-
 
 
     public static RestApiInterface getService() {

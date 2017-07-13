@@ -4,16 +4,21 @@ package amrith.com.volunteers.Adapters;
  * Created by amrith on 7/11/17.
  */
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.List;
 
+import amrith.com.volunteers.Helper;
 import amrith.com.volunteers.R;
+import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.Admin;
 import butterknife.BindView;
@@ -29,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -71,9 +77,66 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
             @Override
             public void onClick(View v) {
 //                removeAdmin(position);
-
+                showPopup();
             }
         });
+    }
+
+    public void showPopup(){
+
+        Dialog dialog=new Dialog(context);
+        dialog.setContentView(R.layout.team_access_dialog);
+        dialog.setTitle("Team-Access Dialog");
+        final Spinner teamSpinner=(Spinner)dialog.findViewById(R.id.spinner_team);
+        final Spinner accessSpinner=(Spinner)dialog.findViewById(R.id.spinner_access);
+        Button submit=(Button)dialog.findViewById(R.id.addToTeam);
+
+        final ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
+        teamSpinner.setAdapter(team_list);
+
+        ArrayAdapter<Integer> access_list=new ArrayAdapter<Integer>(context,R.layout.support_simple_spinner_dropdown_item, Global.accessList);
+        teamSpinner.setAdapter(access_list);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String team=teamSpinner.getSelectedItem().toString();
+                int access=Integer.parseInt(accessSpinner.getSelectedItem().toString());
+                String table="";
+                switch (team){
+                    case "Accomodation":
+                        table="Accomodation";
+                        break;
+
+                    case "Food and Venue":
+                        table="Food and Venue";
+                        break;
+
+                    case "Publicity":
+                        table="Publicity";
+                        break;
+
+                    case "Registration":
+                        table="Registration";
+                        break;
+
+                    case "Sessions":
+                        table="Sessions";
+                        break;
+
+                    case "Sponsorship":
+                        table="Sponsorship";
+                        break;
+
+                    default:
+                        Toast.makeText(context,"No Team Selected",Toast.LENGTH_SHORT);
+                        return;
+                }
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override
