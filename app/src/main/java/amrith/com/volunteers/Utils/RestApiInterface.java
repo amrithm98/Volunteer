@@ -63,7 +63,9 @@ public interface RestApiInterface {
     Call<List<Admin>> getPeopleInCollege(@Field("idToken")String token,@Field("collegeId") int id);
 
     @FormUrlEncoded
-    @POST("volunteer-admin/{team}/add")
-    Call <String> addVolunteerToTeam(@Path("team")String table,@Field("idToken")String token,@Field("adminUid")String uid,
-                                                @Field("eventId") int eventId,@Field("access")int access);
+    @PUT("volunteer-admin/{team}/add")
+    Call <String> addVolunteerToTeam(@Path("team")String table,@Field("idToken")String token,@Field("uid")String uid,
+                                                @Field("eventId") int eventId,@Field("access")int access,@Field("word")String desc,
+                                                @Field("completion") int comp);
+
 }
