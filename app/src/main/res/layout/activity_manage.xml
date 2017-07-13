@@ -9,18 +9,84 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="amrith.com.volunteers.Manage">
+
+    <Button
+        android:text="Sessions"
+        android:layout_margin="5dp"
+        android:background="@drawable/grad"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sessions"
+        android:layout_below="@+id/publicity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Publicity"
+        android:layout_margin="5dp"
+        android:background="@drawable/grad"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/publicity"
+        android:layout_below="@+id/food_venue"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Food And Venue"
+        android:layout_margin="5dp"
+        android:background="@drawable/grad"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/food_venue"
+        android:layout_below="@+id/accomodation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Accomodation"
+        android:background="@drawable/grad"
+        android:layout_margin="5dp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:id="@+id/accomodation" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Teams"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textColor="@color/black"
         android:id="@+id/tv_name"
-        android:textAlignment="center" />
-    <android.support.v7.widget.RecyclerView
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="Sponsorship"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_name"
-        android:id="@+id/rv_teams">
-    </android.support.v7.widget.RecyclerView>
+        android:background="@drawable/grad"
+        android:textColor="@color/white"
+        android:id="@+id/sponsor"
+        android:layout_below="@+id/sessions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Registration"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg"
+        android:background="@drawable/grad"
+        android:textColor="@color/white"
+        android:layout_below="@+id/sponsor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
