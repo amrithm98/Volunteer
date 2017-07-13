@@ -27,11 +27,25 @@
         android:layout_below="@+id/tv_access"
         android:id="@+id/spinner_access">
     </Spinner>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tl_work"
+        android:layout_below="@+id/spinner_access">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duty"
+            android:id="@+id/et_work"/>
+    </android.support.design.widget.TextInputLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addToTeam"        android:text="Add To Team"
         android:background="@color/colorAccent"
-        android:layout_below="@+id/spinner_access"
+        android:layout_below="@+id/tl_work"
         android:textColor="@color/white" />
 </RelativeLayout>

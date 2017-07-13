@@ -7,6 +7,7 @@ import java.util.List;
 import amrith.com.volunteers.models.Admin;
 import amrith.com.volunteers.models.College;
 import amrith.com.volunteers.models.Event;
+import amrith.com.volunteers.models.EventVolt;
 import amrith.com.volunteers.models.Feed;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -63,9 +64,11 @@ public interface RestApiInterface {
     Call<List<Admin>> getPeopleInCollege(@Field("idToken")String token,@Field("collegeId") int id);
 
     @FormUrlEncoded
-    @PUT("volunteer-admin/{team}/add")
+    @PUT("volunteer-admin/team/{team}/add")
     Call <String> addVolunteerToTeam(@Path("team")String table,@Field("idToken")String token,@Field("uid")String uid,
-                                                @Field("eventId") int eventId,@Field("access")int access,@Field("word")String desc,
+                                                @Field("eventId") int eventId,@Field("access")int access,@Field("work")String desc,
                                                 @Field("completion") int comp);
 
+    @GET("volunteer-admin/team/{team}/{id}")
+    Call <List<EventVolt>> getVoltsInTeam(@Path("team") String team,@Path("id")int eventId);
 }

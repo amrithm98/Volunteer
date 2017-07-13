@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -97,6 +98,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
         final Spinner teamSpinner=(Spinner)dialog.findViewById(R.id.spinner_team);
         final Spinner accessSpinner=(Spinner)dialog.findViewById(R.id.spinner_access);
         Button submit=(Button)dialog.findViewById(R.id.addToTeam);
+        final EditText etWork=(EditText)dialog.findViewById(R.id.et_work);
         final int currentPosition=pos;
 
         ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
@@ -110,6 +112,12 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
             public void onClick(View v) {
                 String team=teamSpinner.getSelectedItem().toString();
                 String access=accessSpinner.getSelectedItem().toString();
+                String work=etWork.getText().toString();
+                if(work==null || work.isEmpty())
+                {
+                    etWork.setError("Please Assign Some Duty!");
+                    return;
+                }
                 String table="";
                 int level=8;
 
@@ -137,7 +145,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
                         break;
 
                     case "Food and Venue":
-                        table="Food and Venue";
+                        table="Food_and_Venue";
                         break;
 
                     case "Publicity":
@@ -161,7 +169,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
                         return;
                 }
                 Toast.makeText(context,table,Toast.LENGTH_SHORT).show();
-                addVolunteer(table,level,currentPosition);
+                addVolunteer(table,level,currentPosition,work);
             }
         });
 
@@ -169,14 +177,15 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
 
     }
 
-    public void addVolunteer(final String table, final int level, int pos)
+    public void addVolunteer(final String table, final int level, int pos,String work)
     {
         final Admin admin=adminList.get(pos);
+        final String desc=work;
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
                 RestApiInterface service = ApiClient.getService();
-                Call<String> call=service.addVolunteerToTeam(table,token,admin.uid,Global.eventId,level);
+                Call<String> call=service.addVolunteerToTeam(table,token,admin.uid,Global.eventId,level,desc,0);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
