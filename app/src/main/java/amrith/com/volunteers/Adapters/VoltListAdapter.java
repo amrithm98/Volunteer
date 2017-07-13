@@ -94,15 +94,35 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
         ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
         teamSpinner.setAdapter(team_list);
 
-        ArrayAdapter<Integer> access_list=new ArrayAdapter<Integer>(context,R.layout.support_simple_spinner_dropdown_item, Global.accessList);
+        ArrayAdapter<String> access_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.accessList);
         accessSpinner.setAdapter(access_list);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String team=teamSpinner.getSelectedItem().toString();
-                int access=Integer.parseInt(accessSpinner.getSelectedItem().toString());
+                String access=accessSpinner.getSelectedItem().toString();
                 String table="";
+                int level=8;
+
+                switch (access){
+                    case "Super Admin":
+                        level=10;
+                        break;
+
+                    case "Admin":
+                        level=9;
+                        break;
+
+                    case "Volunteer":
+                        level=8;
+                        break;
+
+                    default:
+                        level=0;
+                        break;
+                }
+
                 switch (team){
                     case "Accomodation":
                         table="Accomodation";
