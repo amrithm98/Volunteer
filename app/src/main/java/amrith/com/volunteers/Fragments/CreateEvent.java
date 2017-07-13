@@ -26,6 +26,7 @@ import amrith.com.volunteers.MainActivity;
 import amrith.com.volunteers.NewEvent;
 import amrith.com.volunteers.R;
 import amrith.com.volunteers.Utils.ApiClient;
+import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.Utils.RestApiInterface;
 import amrith.com.volunteers.Utils.TokenUtil;
 import amrith.com.volunteers.models.Event;
@@ -143,8 +144,10 @@ public class CreateEvent extends Fragment{
                     public void onResponse(Call<Event> call, Response<Event> response) {
                         if(response.code()==200)
                         {
+                            Event event=response.body();
                             Snackbar.make(getActivity().getCurrentFocus(), "Successfully Created!", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
+                            Global.eventId=event.id;
                             startActivity(new Intent(getActivity(),MainActivity.class));
                         }
                         else {

@@ -8,7 +8,7 @@
             android:title="Feed" />
         <item
             android:id="@+id/nav_myEvents"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_event_white_24dp"
             android:title="Events" />
         <item
             android:id="@+id/nav_forum"
@@ -17,7 +17,7 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Manage" />
+            android:title="Manage Teams" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"

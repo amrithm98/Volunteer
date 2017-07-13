@@ -26,6 +26,5 @@ public class TeamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team);
         ButterKnife.bind(this);
         teamName.setText(Global.teamList.get(teamId));
-
     }
 }
