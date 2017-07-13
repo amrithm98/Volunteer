@@ -91,11 +91,11 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
         final Spinner accessSpinner=(Spinner)dialog.findViewById(R.id.spinner_access);
         Button submit=(Button)dialog.findViewById(R.id.addToTeam);
 
-        final ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
+        ArrayAdapter<String> team_list=new ArrayAdapter<String>(context,R.layout.support_simple_spinner_dropdown_item, Global.teamList);
         teamSpinner.setAdapter(team_list);
 
         ArrayAdapter<Integer> access_list=new ArrayAdapter<Integer>(context,R.layout.support_simple_spinner_dropdown_item, Global.accessList);
-        teamSpinner.setAdapter(access_list);
+        accessSpinner.setAdapter(access_list);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +132,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
                         Toast.makeText(context,"No Team Selected",Toast.LENGTH_SHORT);
                         return;
                 }
+                Toast.makeText(context,table,Toast.LENGTH_SHORT).show();
             }
         });
 

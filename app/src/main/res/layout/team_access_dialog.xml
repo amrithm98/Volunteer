@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="5dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose Team:"
-        android:id="@+id/tv_team"/>
+        android:id="@+id/tv_team"
+        android:textAlignment="center" />
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,8 +17,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose Team:"
-        android:id="@+id/tv_access"/>
+        android:layout_below="@+id/spinner_team"
+        android:text="Choose Access:"
+        android:id="@+id/tv_access"
+        android:textAlignment="center" />
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,9 +30,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addToTeam"
-        android:text="Add To Team"
+        android:id="@+id/addToTeam"        android:text="Add To Team"
         android:background="@color/colorAccent"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"/>
-</LinearLayout>
+        android:layout_below="@+id/spinner_access"
+        android:textColor="@color/white" />
+</RelativeLayout>
