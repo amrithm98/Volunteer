@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -39,6 +40,13 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
     List<EventVolt> voltList;
     Context context;
     Admin currentAdmin;
+    String tableName;
+
+    public EventVoltAdapter(Context con, List<EventVolt> eventVoltList,String table) {
+        context = con;
+        voltList = eventVoltList;
+        tableName=table;
+    }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -72,7 +80,22 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                                 TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
                                     @Override
                                     public void tokenObtained(String token) {
+                                        RestApiInterface service = ApiClient.getService();
+                                        Call<String> call=service.updateCompletion(tableName,token,eventVolt.id);
+                                        call.enqueue(new Callback<String>() {
+                                            @Override
+                                            public void onResponse(Call<String> call, Response<String> response) {
+                                                if(response.code()==200)
+                                                {
+                                                    Toast.makeText(context,"Task Completed",Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
 
+                                            @Override
+                                            public void onFailure(Call<String> call, Throwable t) {
+
+                                            }
+                                        });
                                     }
                                 });
                             }

@@ -76,5 +76,6 @@ public interface RestApiInterface {
     Call <Admin> getAdmin(@Path("uid") String uid,@Field("idToken") String token);
 
     @FormUrlEncoded
-    @POST("volunteer-admin/team")
+    @POST("volunteer-admin/team/{team}/update")
+    Call <String> updateCompletion(@Path("team") String table,@Field("idToken") String token,@Field("id")int id);
 }
