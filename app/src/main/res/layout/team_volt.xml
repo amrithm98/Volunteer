@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/card_main"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="5dp"
+    card_view:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/grad_header"
+        android:layout_height="wrap_content"
+        android:id="@+id/parent_ll"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/volt_image"
+            android:layout_margin="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Mohanlal"
+            android:id="@+id/volt_name"
+            android:textSize="24sp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:textStyle="normal|bold" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task"
+            android:id="@+id/view_volt"
+            android:elevation="9dp"
+            android:theme="@style/AddButton"
+            android:layout_gravity="center" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:id="@+id/add_volt"
+            android:layout_alignParentRight="true"
+            android:elevation="9dp"
+            android:theme="@style/AddButton"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
