@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pending"
-            android:id="@+id/add_volt"
+            android:id="@+id/finish"
             android:layout_alignParentRight="true"
             android:elevation="9dp"
             android:theme="@style/AddButton"

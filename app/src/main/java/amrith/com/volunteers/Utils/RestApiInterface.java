@@ -71,4 +71,7 @@ public interface RestApiInterface {
 
     @GET("volunteer-admin/team/{team}/{id}")
     Call <List<EventVolt>> getVoltsInTeam(@Path("team") String team,@Path("id")int eventId);
+
+    @GET("volunteer-admin/auth/{uid}")
+    Call <Admin> getAdmin(@Path("uid") String uid,@Field("idToken") String token);
 }
