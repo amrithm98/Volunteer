@@ -74,4 +74,7 @@ public interface RestApiInterface {
 
     @GET("volunteer-admin/auth/{uid}")
     Call <Admin> getAdmin(@Path("uid") String uid,@Field("idToken") String token);
+
+    @FormUrlEncoded
+    @POST("volunteer-admin/team")
 }

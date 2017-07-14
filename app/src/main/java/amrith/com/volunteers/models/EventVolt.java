@@ -5,6 +5,7 @@ package amrith.com.volunteers.models;
  */
 
 public class EventVolt {
+    public int id;
     public String uid;
     public int eventId;
     public String work;

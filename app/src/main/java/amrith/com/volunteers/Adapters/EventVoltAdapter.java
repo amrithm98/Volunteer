@@ -69,7 +69,12 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                
+                                TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
+                                    @Override
+                                    public void tokenObtained(String token) {
+
+                                    }
+                                });
                             }
                         }).show();
             }
