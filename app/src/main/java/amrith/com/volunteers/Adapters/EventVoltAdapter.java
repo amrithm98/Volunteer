@@ -59,9 +59,8 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         final EventVolt eventVolt=voltList.get(position);
-        Admin admin=getAdminDetails(eventVolt.uid);
-        holder.voltName.setText(admin.name);
-        Picasso.with(context).load(admin.picture).into(holder.voltImage);
+        holder.voltName.setText(eventVolt.name);
+        Picasso.with(context).load(eventVolt.picture).into(holder.voltImage);
         holder.viewVolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
