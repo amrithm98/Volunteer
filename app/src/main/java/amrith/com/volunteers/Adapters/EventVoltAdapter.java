@@ -67,6 +67,14 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         final EventVolt eventVolt=voltList.get(position);
         holder.voltName.setText(eventVolt.name);
+        if(eventVolt.completion==1)
+        {
+            holder.finishTask.setText("Complete");
+        }
+        else
+        {
+            holder.finishTask.setText("Pending");
+        }
         Picasso.with(context).load(eventVolt.picture).into(holder.voltImage);
         holder.viewVolt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +83,7 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                
+
                             }
                         }).show();
         }});

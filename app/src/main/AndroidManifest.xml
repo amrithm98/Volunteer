@@ -13,6 +13,7 @@
         android:icon="@drawable/gplus"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:orientation="vertical"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
