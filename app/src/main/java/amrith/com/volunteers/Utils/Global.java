@@ -27,5 +27,7 @@ public class Global {
     public static String FRIENDLY_MSG_LENGTH="friendly_msg_length";
     public static ArrayList<String> teamList=new ArrayList<>(Arrays.asList("Accomodation","Food and Venue","Publicity",
                                                 "Sessions","Sponsorship","Registration"));
+    public static ArrayList<String> teamListApi=new ArrayList<>(Arrays.asList("Accomodation","Food_and_Venue","Publicity",
+            "Sessions","Sponsorship","Registration"));
     public static ArrayList<String> accessList=new ArrayList<>(Arrays.asList("Super Admin","Admin","Volunteer","View"));
 }

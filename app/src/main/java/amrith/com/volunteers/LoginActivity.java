@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -77,7 +78,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                Snackbar.make(v, "Please Click the G+ Button to Login", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

@@ -59,8 +59,7 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         final EventVolt eventVolt=voltList.get(position);
-        getAdminDetails(eventVolt.uid);
-        final Admin admin=currentAdmin;
+        Admin admin=getAdminDetails(eventVolt.uid);
         holder.voltName.setText(admin.name);
         Picasso.with(context).load(admin.picture).into(holder.voltImage);
         holder.viewVolt.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +104,7 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
 
     }
 
-    public void getAdminDetails(String uid){
+    public Admin getAdminDetails(String uid){
 
         final String Uid=uid;
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
@@ -121,7 +120,6 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                            currentAdmin=response.body();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<Admin> call, Throwable t) {
 
@@ -129,6 +127,7 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                 });
             }
         });
+        return currentAdmin;
     }
 
     @Override

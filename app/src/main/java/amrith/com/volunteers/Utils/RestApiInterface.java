@@ -69,10 +69,12 @@ public interface RestApiInterface {
                                                 @Field("eventId") int eventId,@Field("access")int access,@Field("work")String desc,
                                                 @Field("completion") int comp);
 
-    @GET("volunteer-admin/team/{team}/{id}")
-    Call <List<EventVolt>> getVoltsInTeam(@Path("team") String team,@Path("id")int eventId);
+    @FormUrlEncoded
+    @POST("volunteer-admin/team/{team}/{id}")
+    Call <List<EventVolt>> getVoltsInTeam(@Path("team") String team,@Path("id")int eventId,@Field("idToken") String token);
 
-    @GET("volunteer-admin/auth/{uid}")
+    @FormUrlEncoded
+    @POST("volunteer-admin/auth/{uid}")
     Call <Admin> getAdmin(@Path("uid") String uid,@Field("idToken") String token);
 
     @FormUrlEncoded
