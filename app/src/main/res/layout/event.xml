@@ -20,7 +20,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:text="Event"
-        android:background="@drawable/grad"
+        android:background="@color/colorPrimary"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textStyle="normal|bold" />
