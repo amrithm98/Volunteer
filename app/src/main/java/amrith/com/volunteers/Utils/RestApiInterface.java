@@ -30,7 +30,7 @@ public interface RestApiInterface {
     @FormUrlEncoded
     @POST("volunteer-admin/auth/register")
     Call<String> register(@Field("idToken") String idToken, @Field("phone") String phone,
-                          @Field("collegeId")int college, @Field("registered")Boolean registered);
+                          @Field("collegeId")int college, @Field("registered")Boolean registered,@Field("status") int status);
 
     @FormUrlEncoded
     @PUT("volunteer-admin/event/newEvent")
@@ -46,7 +46,7 @@ public interface RestApiInterface {
     Call<List<College>> getCollegeList();
 
     @FormUrlEncoded
-    @PUT("volunteer-admin/college/")
+    @POST("volunteer-admin/college/")
     Call<College> addCollege(@Field("idToken") String idToken,@Field("name") String collegeName);
 
     @FormUrlEncoded

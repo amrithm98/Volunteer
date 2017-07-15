@@ -51,6 +51,10 @@ public class ChooseEvent extends AppCompatActivity implements EventListAdapter.I
                     @Override
                     public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                         eList= (ArrayList<Event>) response.body();
+                        if(eList.size()==0)
+                        {
+                            startActivity(new Intent(ChooseEvent.this,Helper.class));
+                        }
                         eventListAdapter=new EventListAdapter(getApplicationContext(),eList);
                         rvEvent.setAdapter(eventListAdapter);
                         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());

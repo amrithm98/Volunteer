@@ -96,12 +96,20 @@ public class RegisterActivity extends AppCompatActivity {
                 call.enqueue(new retrofit2.Callback<College>() {
                     @Override
                     public void onResponse(Call<College> call, retrofit2.Response<College>response) {
-                        Toast.makeText(getApplicationContext(),"Added College Name",Toast.LENGTH_SHORT).show();
-                        loadTextView();
+                        if(response.code()==200)
+                        {
+                            Toast.makeText(getApplicationContext(),"Added College Name",Toast.LENGTH_SHORT).show();
+                            loadTextView();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Failed To Add College Name",Toast.LENGTH_SHORT).show();
+                        }
                     }
                     @Override
                     public void onFailure(Call<College> call, Throwable t) {
                         progressDialog.disMissProgressDialog();
+                        Toast.makeText(getApplicationContext(),"Network Error",Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }
@@ -128,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity {
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
-                Call<String> call=service.register(token,number,collegeList.get(college),true);
+                Call<String> call=service.register(token,number,collegeList.get(college),true,10);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
