@@ -24,13 +24,12 @@
                 android:hint="Message" />
         </android.support.design.widget.TextInputLayout>
     </android.support.design.widget.TextInputLayout>
-    <Button
+     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Notification"
         android:id="@+id/notif"
         android:textAlignment="center"
-        android:alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:textColor="@color/white" />
 </LinearLayout>

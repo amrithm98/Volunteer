@@ -20,12 +20,11 @@
         android:id="@+id/description" />
 
     <Button
+        android:text="Post Update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/create"
-        android:textAlignment="center"
-        android:alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white" />
+        android:id="@+id/post"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
