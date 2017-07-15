@@ -61,7 +61,6 @@ public class TeamActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<List<EventVolt>> call, Response<List<EventVolt>> response) {
                         Toast.makeText(getApplicationContext(),"POST",Toast.LENGTH_SHORT).show();
-                        Log.d("nothing","Nothing");
                         List<EventVolt> eventVolts =response.body();
                         eventVoltList=eventVolts;
                         eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamid),TeamActivity.this);

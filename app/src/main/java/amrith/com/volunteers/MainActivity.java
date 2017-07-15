@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import amrith.com.volunteers.Fragments.ChatFragment;
 import amrith.com.volunteers.Fragments.MainFragment;
+import amrith.com.volunteers.Fragments.NotificationFragment;
 import amrith.com.volunteers.Utils.Global;
 
 public class MainActivity extends AppCompatActivity
@@ -127,6 +128,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_manage:
                 startActivity(new Intent(MainActivity.this,Manage.class));
+                break;
+            case R.id.nav_tools:
+                fragment=new NotificationFragment();
                 break;
         }
 

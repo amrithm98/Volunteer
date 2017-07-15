@@ -80,4 +80,8 @@ public interface RestApiInterface {
     @FormUrlEncoded
     @POST("volunteer-admin/team/{team}/update")
     Call <String> updateCompletion(@Path("team") String table,@Field("idToken") String token,@Field("id")int id);
+
+    @FormUrlEncoded
+    @POST("volunteer-admin/auth/fcm")
+    Call <String> sendNotification(@Field("idToken")String token,@Field("topic")String topic,@Field("msg")String msg);
 }
