@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,29 +49,32 @@ public class TeamActivity extends AppCompatActivity {
         getTeamDetails(teamId);
     }
 
-    public void getTeamDetails(final int teamId)
+    public void getTeamDetails(int teamId)
     {
         final int teamid=teamId;
         TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
             @Override
             public void tokenObtained(String token) {
                 RestApiInterface service = ApiClient.getService();
-                Call<List<EventVolt>> call=service.getVoltsInTeam(Global.teamList.get(teamId),Global.eventId,token);
+                Call<List<EventVolt>> call=service.getVoltsInTeam(Global.teamListApi.get(teamid),Global.eventId,token);
                 call.enqueue(new Callback<List<EventVolt>>() {
                     @Override
                     public void onResponse(Call<List<EventVolt>> call, Response<List<EventVolt>> response) {
-                        List<EventVolt> eventVolts = (List<EventVolt>) response.body();
+                        Toast.makeText(getApplicationContext(),"POST",Toast.LENGTH_SHORT).show();
+                        Log.d("nothing","Nothing");
+                        List<EventVolt> eventVolts =response.body();
                         eventVoltList=eventVolts;
-                        eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamId));
+                        Log.d("eventVolt",String.valueOf(eventVolts.get(0).name));
+                        eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamid));
                         rvVolunteers.setAdapter(eventVoltAdapter);
                         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
                         rvVolunteers.setLayoutManager(linearLayoutManager);
                         eventVoltAdapter.notifyDataSetChanged();
                     }
-
                     @Override
                     public void onFailure(Call<List<EventVolt>> call, Throwable t) {
-
+                        Toast.makeText(getApplicationContext(),"Failed . Try Later",Toast.LENGTH_SHORT).show();
+                        Log.d("Error",t.toString());
                     }
                 });
             }

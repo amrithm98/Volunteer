@@ -11,6 +11,6 @@ public class EventVolt {
     public String work;
     public int completion;
     public int access;
-    public int name;
-    public int picture;
+    public String name;
+    public String picture;
 }
