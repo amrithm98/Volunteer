@@ -26,6 +26,7 @@ import amrith.com.volunteers.Utils.TokenUtil;
 import amrith.com.volunteers.models.Feed;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,7 +65,10 @@ public class MainFragment extends Fragment{
         getFeed();
     }
 
-
+    @OnClick(R.id.reload)
+    public void reload(){
+        getFeed();
+    }
     public void getFeed()
     {
         final RestApiInterface service = ApiClient.getService();
