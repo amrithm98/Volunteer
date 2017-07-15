@@ -67,7 +67,7 @@ public interface RestApiInterface {
     @PUT("volunteer-admin/team/{team}/add")
     Call <String> addVolunteerToTeam(@Path("team")String table,@Field("idToken")String token,@Field("uid")String uid,
                                                 @Field("eventId") int eventId,@Field("access")int access,@Field("work")String desc,
-                                                @Field("completion") int comp);
+                                                @Field("name") String name,@Field("picture") String pic,@Field("completion") int comp);
 
     @FormUrlEncoded
     @POST("volunteer-admin/team/{team}/{id}")

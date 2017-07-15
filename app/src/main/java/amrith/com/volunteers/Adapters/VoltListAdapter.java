@@ -185,7 +185,7 @@ public class VoltListAdapter extends RecyclerView.Adapter<VoltListAdapter.ItemVi
             @Override
             public void tokenObtained(String token) {
                 RestApiInterface service = ApiClient.getService();
-                Call<String> call=service.addVolunteerToTeam(table,token,admin.uid,Global.eventId,level,desc,0);
+                Call<String> call=service.addVolunteerToTeam(table,token,admin.uid,Global.eventId,level,desc,Global.name,Global.picture,0);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
