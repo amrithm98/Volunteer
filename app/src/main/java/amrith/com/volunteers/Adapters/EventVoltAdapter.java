@@ -1,5 +1,7 @@
 package amrith.com.volunteers.Adapters;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -14,9 +16,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import amrith.com.volunteers.R;
+import amrith.com.volunteers.TeamActivity;
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
 import amrith.com.volunteers.Utils.RestApiInterface;
@@ -41,11 +46,13 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
     Context context;
     Admin currentAdmin;
     String tableName;
+    Activity mActivity=null;
 
-    public EventVoltAdapter(Context con, List<EventVolt> eventVoltList,String table) {
+    public EventVoltAdapter(Context con, List<EventVolt> eventVoltList,String table,Activity activity) {
         context = con;
         voltList = eventVoltList;
         tableName=table;
+        mActivity=activity;
     }
 
     @Override
@@ -64,14 +71,19 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
         holder.viewVolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog=new AlertDialog.Builder(context).setTitle("Task").setMessage(eventVolt.work).show();
-            }
-        });
+                AlertDialog dialog=new AlertDialog.Builder(mActivity,R.style.dialogTheme).setTitle("Task").setMessage(eventVolt.work)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                
+                            }
+                        }).show();
+        }});
 
         holder.finishTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog dialog=new AlertDialog.Builder(context).setTitle("Confirm").setMessage("Are you sure the task is complete?")
+                AlertDialog dialog=new AlertDialog.Builder(mActivity,R.style.dialogTheme).setTitle("Confirm").setMessage("Are you sure the task is complete?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -96,6 +108,11 @@ public class EventVoltAdapter extends RecyclerView.Adapter<EventVoltAdapter.Item
                                         });
                                     }
                                 });
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
                             }
                         }).show();
             }

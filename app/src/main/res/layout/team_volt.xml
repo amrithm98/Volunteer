@@ -31,7 +31,6 @@
             android:layout_gravity="center"
             android:text="Mohanlal"
             android:id="@+id/volt_name"
-            android:textSize="24sp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="5dp"

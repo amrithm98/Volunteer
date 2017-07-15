@@ -65,7 +65,7 @@ public class TeamActivity extends AppCompatActivity {
                         List<EventVolt> eventVolts =response.body();
                         eventVoltList=eventVolts;
                         Log.d("eventVolt",String.valueOf(eventVolts.get(0).name));
-                        eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamid));
+                        eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamid),TeamActivity.this);
                         rvVolunteers.setAdapter(eventVoltAdapter);
                         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
                         rvVolunteers.setLayoutManager(linearLayoutManager);
