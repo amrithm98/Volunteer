@@ -5,6 +5,7 @@ package amrith.com.volunteers.Fragments;
  */
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
@@ -125,7 +126,8 @@ public class AddVolunteer extends Fragment{
                         progressDialog.disMissProgressDialog();
                         if(response.code()==200)
                         {
-                            Toast.makeText(getActivity(),"Got Volunteers in the college",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(getView(), "Fetched Volunteers", Snackbar.LENGTH_SHORT)
+                                    .setAction("Action", null).show();
                             List<Admin> admins = (List<Admin>) response.body();
                             adminList=admins;
                             voltListAdapter=new VoltListAdapter(getActivity(),adminList);

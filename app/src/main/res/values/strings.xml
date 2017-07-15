@@ -3,7 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="eventVolt">Fetching Volunteers</string>
     <string name="action_settings">Settings</string>
     <string name="loading">Loading</string>
     <string name="posting">Posting Update</string>

@@ -1,5 +1,6 @@
 package amrith.com.volunteers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -110,7 +111,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     TokenUtil.getFirebaseToken(new TokenUtil.Listener() {
                         @Override
                         public void tokenObtained(String token) {
-                            progressDialog.showProgressDialog();
+                            if(!((Activity)LoginActivity.this).isFinishing())
+                            {
+                                progressDialog.showProgressDialog(R.string.login,false);
+                            }
                             Log.d("idToken",token);
                             Call<Admin> call=service.login(token);
                             call.enqueue(new Callback<Admin>() {

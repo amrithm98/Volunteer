@@ -16,6 +16,7 @@ import amrith.com.volunteers.Adapters.EventVoltAdapter;
 import amrith.com.volunteers.Adapters.VoltListAdapter;
 import amrith.com.volunteers.Utils.ApiClient;
 import amrith.com.volunteers.Utils.Global;
+import amrith.com.volunteers.Utils.ProgressDialog;
 import amrith.com.volunteers.Utils.RestApiInterface;
 import amrith.com.volunteers.Utils.TokenUtil;
 import amrith.com.volunteers.models.Admin;
@@ -39,6 +40,8 @@ public class TeamActivity extends AppCompatActivity {
 
     EventVoltAdapter eventVoltAdapter;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,7 @@ public class TeamActivity extends AppCompatActivity {
         int teamId=intent.getIntExtra("team",0);
         setContentView(R.layout.activity_team);
         ButterKnife.bind(this);
+        progressDialog=new ProgressDialog(this);
         teamName.setText(Global.teamList.get(teamId));
         getTeamDetails(teamId);
     }
@@ -58,9 +62,11 @@ public class TeamActivity extends AppCompatActivity {
             public void tokenObtained(String token) {
                 RestApiInterface service = ApiClient.getService();
                 Call<List<EventVolt>> call=service.getVoltsInTeam(Global.teamListApi.get(teamid),Global.eventId,token);
+                progressDialog.showProgressDialog(R.string.eventVolt,false);
                 call.enqueue(new Callback<List<EventVolt>>() {
                     @Override
                     public void onResponse(Call<List<EventVolt>> call, Response<List<EventVolt>> response) {
+                        progressDialog.disMissProgressDialog();
                         Toast.makeText(getApplicationContext(),"Fetched All Volunteers",Toast.LENGTH_SHORT).show();
                         List<EventVolt> eventVolts =response.body();
                         if(eventVolts.size()==0)
@@ -77,6 +83,7 @@ public class TeamActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(Call<List<EventVolt>> call, Throwable t) {
+                        progressDialog.disMissProgressDialog();
                         Toast.makeText(getApplicationContext(),"Failed . Try Later",Toast.LENGTH_SHORT).show();
                         Log.d("Error",t.toString());
                     }
