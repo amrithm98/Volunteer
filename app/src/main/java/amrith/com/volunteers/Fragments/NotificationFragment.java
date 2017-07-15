@@ -14,6 +14,7 @@ import android.widget.EditText;
 
 import amrith.com.volunteers.R;
 import amrith.com.volunteers.Utils.ApiClient;
+import amrith.com.volunteers.Utils.ProgressDialog;
 import amrith.com.volunteers.Utils.RestApiInterface;
 import amrith.com.volunteers.Utils.TokenUtil;
 import butterknife.BindView;
@@ -31,6 +32,8 @@ public class NotificationFragment extends Fragment{
     @BindView(R.id.et_message)
     EditText etMessage;
 
+    ProgressDialog progressDialog;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -42,6 +45,7 @@ public class NotificationFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.content_notification_frag, container, false);
         ButterKnife.bind(this, view);
+        progressDialog=new ProgressDialog(getActivity());
         return view;
 
     }
@@ -66,9 +70,11 @@ public class NotificationFragment extends Fragment{
             public void tokenObtained(String token) {
                 RestApiInterface service= ApiClient.getService();
                 Call<String> call=service.sendNotification(token,topic,message);
+                progressDialog.showProgressDialog(R.string.notif,false);
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+                        progressDialog.disMissProgressDialog();
                         if(response.code()==200)
                         {
                             Snackbar.make(getView(), "Notification Sent", Snackbar.LENGTH_SHORT)
@@ -77,6 +83,7 @@ public class NotificationFragment extends Fragment{
                     }
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        progressDialog.disMissProgressDialog();
                         Snackbar.make(getView(), "Failed To Send", Snackbar.LENGTH_SHORT)
                                 .setAction("Action", null).show();
                     }
