@@ -1,6 +1,7 @@
 package amrith.com.volunteers;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -60,8 +61,13 @@ public class TeamActivity extends AppCompatActivity {
                 call.enqueue(new Callback<List<EventVolt>>() {
                     @Override
                     public void onResponse(Call<List<EventVolt>> call, Response<List<EventVolt>> response) {
-                        Toast.makeText(getApplicationContext(),"POST",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Fetched All Volunteers",Toast.LENGTH_SHORT).show();
                         List<EventVolt> eventVolts =response.body();
+                        if(eventVolts.size()==0)
+                        {
+                            Snackbar.make(getCurrentFocus(), "No Volunteers in the Team", Snackbar.LENGTH_SHORT)
+                                    .setAction("Action", null).show();
+                        }
                         eventVoltList=eventVolts;
                         eventVoltAdapter=new EventVoltAdapter(getApplicationContext(),eventVoltList,Global.teamListApi.get(teamid),TeamActivity.this);
                         rvVolunteers.setAdapter(eventVoltAdapter);
