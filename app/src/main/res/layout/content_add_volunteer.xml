@@ -34,13 +34,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:text="Add Volunteer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addVolt"
-        android:background="@color/colorAccent"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true" />
-
 </RelativeLayout>
