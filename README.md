@@ -4,7 +4,7 @@ Event Management Application for IEEE madC 2017. Backend done in node.js . Uses 
 <img src="https://github.com/amrithm98/Volunteer/blob/master/Screenshots/col1.jpg">
 <img src="https://github.com/amrithm98/Volunteer/blob/master/Screenshots/col2.jpg">
 <br>
-Volunteers
+# Features
 <li>V-4-Volunteers is an android application that helps volunteers across IEEE groups to actively organize and manage events. 
 <li>The application will have a user-friendly interface where the event organizer of a student branch or community can add an event. </li>
 <li>Once an event is added, several subsections will be generated for each event which includes various areas of interest when a particular event is conducted. Usually , when an event is conducted , there will be teams for registration, food, venue, sessions,sponsorship etc and there will be one or more persons who would take the overall leadership role. </li>
@@ -21,7 +21,7 @@ Volunteers
 <li>If a user subscribes to the notifications in the  online chat application , he will get notifications even the browser is closed. </li>
 <li>Online Chat URL is : https://v-4-volunteers.firebaseapp.com</li>
 
-<li><b>Working<b></li>
+# Working
 <li>A User installs the app and he will be taken to the login Screen</li>
 <li>At the login Screen , the user clicks the G+ button and logs in with his Google Account. </li>
 <li>After Login, the user will be taken to the register page where the user gives his mobile number and college name. If the college name is not in the auto-complete list, user can add the college from the same page and then register his account.</li>
